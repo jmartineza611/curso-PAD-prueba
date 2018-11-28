@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld :msg="titulo" />
-    <!--Lista/-->
+    <router-view></router-view>
   </div>
 </template>
 

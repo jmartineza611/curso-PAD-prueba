@@ -1,7 +1,5 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2 v-show = muestra> Hola bienvenido {{ nombre }}</h2>
     <b-container class="bv-example-row">
       <b-row>
         <b-col md="4" class="columna1"> </b-col>
@@ -43,7 +41,7 @@
                 <b-form-checkbox value="that">Check that out</b-form-checkbox>
               </b-form-checkbox-group>
             </b-form-group>
-            <b-button type="submit" variant="secondary">Submit</b-button>
+            <b-button type="submit"  variant="secondary">Submit</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
             <b-button variant="success" @click="mostrar($event)"> Mostrar mensaje</b-button>
           </b-form>
@@ -80,6 +78,7 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      this.$router.push({name: 'user' })
       alert(JSON.stringify(this.form))
     },
     mostrar(event){
