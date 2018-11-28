@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld :msg="titulo" />
+    <!--Lista/-->
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Lista from './components/Lista'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    Lista
+  },
+  data () {
+    return {
+      titulo: 'PROGRAMA LISTAS 123'
+    }
   }
 }
 </script>
@@ -25,4 +32,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+</style>
+
+<style lang="scss">
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 </style>

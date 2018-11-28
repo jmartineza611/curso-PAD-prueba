@@ -1,32 +1,56 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <h2 v-show = muestra> Hola bienvenido {{ nombre }}</h2>
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col md="4" class="columna1"> </b-col>
+        <b-col md="4">
+          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+            <b-form-group id="exampleInputGroup1"
+                          label="Email address:"
+                          label-for="exampleInput1"
+                          description="We'll never share your email with anyone else.">
+              <b-form-input id="exampleInput1"
+                            type="email"
+                            v-model="form.email"
+                            required
+                            placeholder="Enter email">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group id="exampleInputGroup2"
+                          label="Your Name:"
+                          label-for="exampleInput2">
+              <b-form-input id="exampleInput2"
+                            type="text"
+                            v-model="form.name"
+                            required
+                            placeholder="Enter name">
+              </b-form-input>
+            </b-form-group>
+            <b-form-group id="exampleInputGroup3"
+                          label="Food:"
+                          label-for="exampleInput3">
+              <b-form-select id="exampleInput3"
+                            :options="foods"
+                            required
+                            v-model="form.food">
+              </b-form-select>
+            </b-form-group>
+            <b-form-group id="exampleGroup4">
+              <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
+                <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                <b-form-checkbox value="that">Check that out</b-form-checkbox>
+              </b-form-checkbox-group>
+            </b-form-group>
+            <b-button type="submit" variant="secondary">Submit</b-button>
+            <b-button type="reset" variant="danger">Reset</b-button>
+            <b-button variant="success" @click="mostrar($event)"> Mostrar mensaje</b-button>
+          </b-form>
+        </b-col>
+        <b-col md="4" class="columna2"> </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -34,25 +58,50 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String 
+  },
+  data() {
+    return {
+      nombre: 'Juan',
+      muestra: true,
+      form: {
+        email: '',
+        name: '',
+        food: null,
+        checked: []
+      },
+      foods: [
+        { text: 'Select One', value: null },
+        'Carrots', 'Beans', 'Tomatoes', 'Corn'
+      ],
+      show: true
+    }
+  },
+  methods: {
+    onSubmit(evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form))
+    },
+    mostrar(event){
+      event.preventDefault();
+      alert('Bienvenido')
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+h1 {
+  color:red;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.columna1{
+  background-color: blueviolet;
+  height: 30px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.columna2{
+  background-color: yellow;
+   height: 30px;
 }
 </style>
+
