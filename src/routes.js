@@ -5,12 +5,12 @@ const routes = [
   {
     path: '/',
     name: 'hello',
-    componet: hello
+    component: hello
   },
   {
     path: '/userInfo',
     name: 'user',
-    componet: userComponent
+    component: userComponent
   }
 ];
 

@@ -76,10 +76,8 @@ export default {
     }
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
+    onSubmit() {
       this.$router.push({name: 'user' })
-      alert(JSON.stringify(this.form))
     },
     mostrar(event){
       event.preventDefault();
