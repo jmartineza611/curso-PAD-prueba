@@ -5,14 +5,10 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import Lista from './components/Lista'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
-    Lista
   },
   data () {
     return {
